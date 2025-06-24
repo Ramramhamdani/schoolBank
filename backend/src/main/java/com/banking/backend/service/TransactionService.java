@@ -126,6 +126,7 @@ public class TransactionService {
             transaction.setTypeOfTransaction(TransactionType.WITHDRAWAL);
         }
         transaction.setDateOfExecution(LocalDateTime.now());
+        transaction.setAmount(amountDelta);
 
         transactionRepository.save(transaction);
         updateBalance(account, amountDelta);
