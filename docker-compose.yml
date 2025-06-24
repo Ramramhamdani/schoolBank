@@ -1,0 +1,35 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: banking-postgres
+    environment:
+      POSTGRES_DB: bankingdb
+      POSTGRES_USER: bankinguser
+      POSTGRES_PASSWORD: bankingpass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: banking-app-java
+    depends_on:
+      - postgres
+    ports:
+      - "9090:9090"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/bankingdb
+      SPRING_DATASOURCE_USERNAME: bankinguser
+      SPRING_DATASOURCE_PASSWORD: bankingpass
+
+  frontend:
+    build: ./frontend
+    container_name: banking-app-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

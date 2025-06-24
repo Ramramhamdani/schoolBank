@@ -1,0 +1,63 @@
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Virtual machine crash logs
+hs_err_pid*
+replay_pid*
+
+# Maven
+target/
+*/target/
+
+# IntelliJ IDEA
+*.iml
+.idea/
+
+# VS Code
+.vscode/
+
+# Mac system files
+.DS_Store
+
+# Node/npm (if you add a frontend with Node)
+frontend/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Docker
+*.pid
+*.seed
+docker-data/
+postgres-data/
+postgres_data/
+.env
+
+# Other
+*.swp
+*.swo
+
+# Exclude test output
+tests/output/
+
+# Optional: Eclipse
+*.project
+*.classpath

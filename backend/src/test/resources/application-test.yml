@@ -1,0 +1,50 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop  # Better for tests - fresh DB each run
+    show-sql: false  # Set to true if you want to see SQL queries during tests
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  # Disable security auto-configuration for tests if needed
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+
+# JWT Configuration for testing
+jwt:
+  secret: your-256-bit-secret-your-256-bit-secret
+  expiration: 3600000
+
+# Logging configuration for debugging tests
+logging:
+  level:
+    com.banking.backend: INFO  # Change to DEBUG if you need more detailed logs
+    org.springframework.security: WARN
+    org.springframework.web: WARN
+    org.hibernate.SQL: WARN  # Change to DEBUG to see SQL queries
+    org.hibernate.type.descriptor.sql.BasicBinder: WARN
+
+# Test-specific configurations
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+# Server configuration for tests
+server:
+  port: 0  # Random port for tests to avoid conflicts
