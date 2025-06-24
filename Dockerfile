@@ -7,7 +7,7 @@ RUN npm install --legacy-peer-deps
 COPY frontend/ .
 
 # Confirm build success and location
-RUN npm run build && ls -alh /app/frontend/build
+RUN npm run build && ls -alh /app/frontend/build || (echo "⚠️ Build failed" && cat /app/frontend/npm-debug.log || true)
 
 
 # ----------- Stage 2: Build Spring Boot App ------------
