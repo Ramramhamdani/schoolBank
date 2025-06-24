@@ -1,11 +1,11 @@
 # ----------- Stage 1: Build React Frontend ------------
 FROM node:18 as frontend-build
 
-WORKDIR /app/frontend
-COPY frontend/package*.json ./
-RUN npm install --legacy-peer-deps
-COPY frontend/ .
-RUN npm run build
+WORKDIR /app
+COPY frontend/package*.json ./frontend/
+RUN cd frontend && npm install --legacy-peer-deps
+COPY frontend ./frontend
+RUN cd frontend && npm run build
 
 
 # ----------- Stage 2: Build Spring Boot App ------------
