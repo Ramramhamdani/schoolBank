@@ -2,8 +2,8 @@
 FROM maven:3.9.6-eclipse-temurin-17 AS build
 
 WORKDIR /build
-COPY pom.xml backend/
-COPY src backend/src
+COPY pom.xml ./
+COPY src ./src
 RUN mvn -f backend/pom.xml clean package -DskipTests
 
 # Second stage: Use distroless for secure runtime
