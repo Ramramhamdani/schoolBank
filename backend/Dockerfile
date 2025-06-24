@@ -4,7 +4,7 @@ FROM maven:3.9.6-eclipse-temurin-17 AS build
 WORKDIR /build
 COPY backend/pom.xml ./
 COPY backend/src ./src
-RUN mvn -f backend/pom.xml clean package -DskipTests
+RUN mvn clean package -DskipTests
 
 # Second stage: Use distroless for secure runtime
 FROM gcr.io/distroless/java17-debian11
