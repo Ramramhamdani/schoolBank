@@ -16,6 +16,7 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
+                .allowedOrigins("https://schoolbank.onrender.com:8080", "https://schoolbank.onrender.com:8081")
                 .allowedOriginPatterns("https://schoolbank.onrender.com:8080", "https://schoolbank.onrender.com:8081")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
@@ -26,7 +27,7 @@ public class CorsConfig implements WebMvcConfigurer {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOriginPatterns(Arrays.asList("https://schoolbank.onrender.com:3000", "https://schoolbank.onrender.com:8081"));
+        configuration.setAllowedOriginPatterns(Arrays.asList("https://schoolbank.onrender.com:8080", "https://schoolbank.onrender.com:8081"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);
