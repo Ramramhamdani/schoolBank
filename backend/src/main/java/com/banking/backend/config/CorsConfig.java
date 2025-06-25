@@ -16,7 +16,6 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("https://schoolbank.onrender.com", "https://schoolbank.onrender.com")
                 .allowedOriginPatterns("https://schoolbank.onrender.com", "https://schoolbank.onrender.com")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
